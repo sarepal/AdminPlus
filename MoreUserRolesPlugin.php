@@ -15,9 +15,9 @@ class MoreUserRolesPlugin extends Omeka_Plugin_AbstractPlugin
 
 
         // AUTHORS inherit the rights of Contributors...
-		$acl->addRole(new Zend_Acl_Role('adminplus');
+		$acl->addRole(new Zend_Acl_Role('adminplus'), 'admin');
 		// ... but are able to publish their own items
-		$acl->allow('adminplus','Appearance');
+		$acl->allow('adminplus','Appearance',array('edit'));
 
 
     //     // EDITORS inherit the rights of Authors...
@@ -32,11 +32,11 @@ class MoreUserRolesPlugin extends Omeka_Plugin_AbstractPlugin
 			// reorder and annotate the Role dropdown menu choices and update the explanatory text.
 			?>
 			<script type="text/javascript">
-				var betterOrder=['researcher','editor','admin','adminplus','super'];
+				var betterOrder=['researcher','contributor','admin','adminplus','super'];
 				var selected = jQuery("#role").val();
 				resortedRoles=[]
 				betterOrder.forEach(function(name){
-					var note=(name=='adminplus') ? ' (More User Roles plugin)' : '';
+					var note=(name=='adminplus') ? ' (Admin Plus plugin)' : '';
 					var opt='<option value="'+name+'">'+name.charAt(0).toUpperCase()+ name.slice(1)+note+'</option>';
 					resortedRoles.push(opt);
 				});
@@ -56,7 +56,7 @@ class MoreUserRolesPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookUninstall(){
 	    // Upon uninstalling the plugin, revert the roles of Authors and Editors back to Contributor
         $db = $this->_db;
-        $sql = "UPDATE `omeka_users` SET `role`='contributor' WHERE `role`= 'adminplus'";
+        $sql = "UPDATE `omeka_users` SET `role`='admin' WHERE `role`= 'adminplus' ";
         $db->query($sql);
     }
 
