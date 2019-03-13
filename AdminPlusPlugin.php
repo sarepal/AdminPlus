@@ -14,9 +14,9 @@ class AdminPlusPlugin extends Omeka_Plugin_AbstractPlugin
         $acl = $args['acl'];
 
 
-        // AUTHORS inherit the rights of Contributors...
+        // AdminPlus inherit the rights of Admins...
 		$acl->addRole(new Zend_Acl_Role('adminplus'), 'admin');
-		// ... but are able to publish their own items
+		// ... but are able to access Appearance and Themes
 		$acl->allow('adminplus', array('Appearance', 'Themes'));
 
     }
