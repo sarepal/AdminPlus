@@ -19,13 +19,6 @@ class AdminPlusPlugin extends Omeka_Plugin_AbstractPlugin
 		// ... but are able to publish their own items
 		$acl->allow('adminplus', array('Appearance', 'Themes'));
 
-
-    //     // EDITORS inherit the rights of Authors...
-		// $acl->addRole(new Zend_Acl_Role('editor'), 'author');
-		// // ... but are able to edit and delete Items and Files created by other users and make items Featured
-		// $acl->allow('editor','Items',array('makeFeatured','edit','delete'));
-		// $acl->allow('editor','Files',array('edit','delete'));
-
     }
 
     public function hookAdminUsersForm($args){
