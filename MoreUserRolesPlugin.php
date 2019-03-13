@@ -17,7 +17,7 @@ class MoreUserRolesPlugin extends Omeka_Plugin_AbstractPlugin
         // AUTHORS inherit the rights of Contributors...
 		$acl->addRole(new Zend_Acl_Role('adminplus'), 'admin');
 		// ... but are able to publish their own items
-		$acl->allow('adminplus','Appearance',array('edit'));
+		$acl->allow('adminplus','Appearance');
 
 
     //     // EDITORS inherit the rights of Authors...
