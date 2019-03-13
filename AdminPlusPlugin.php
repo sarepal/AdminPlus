@@ -54,7 +54,7 @@ class AdminPlusPlugin extends Omeka_Plugin_AbstractPlugin
 
 
     public function hookUninstall(){
-	    // Upon uninstalling the plugin, revert the roles of Authors and Editors back to Contributor
+	    // Upon uninstalling the plugin, revert the roles of AdminPlus back to Admin
         $db = $this->_db;
         $sql = "UPDATE `omeka_users` SET `role`='admin' WHERE `role`= 'adminplus' ";
         $db->query($sql);
