@@ -1,6 +1,6 @@
 <?php
 
-class MoreUserRolesPlugin extends Omeka_Plugin_AbstractPlugin
+class AdminPlusPlugin extends Omeka_Plugin_AbstractPlugin
 {
     protected $_hooks = array(
     	'define_acl',
@@ -36,7 +36,7 @@ class MoreUserRolesPlugin extends Omeka_Plugin_AbstractPlugin
 				var selected = jQuery("#role").val();
 				resortedRoles=[]
 				betterOrder.forEach(function(name){
-					var note=(name=='adminplus') ? ' (Admin Plus plugin)' : '';
+					var note=(name=='adminplus') ? ' (AdminPlus plugin)' : '';
 					var opt='<option value="'+name+'">'+name.charAt(0).toUpperCase()+ name.slice(1)+note+'</option>';
 					resortedRoles.push(opt);
 				});
@@ -47,7 +47,7 @@ class MoreUserRolesPlugin extends Omeka_Plugin_AbstractPlugin
 				if(slug.indexOf('edit')){
 					jQuery("#role").val(selected);
 					}
-				jQuery('#role-label ~ div p').append(' See also <a href="https://github.com/ebellempire/MoreUserRoles" target=_blank">More User Roles plugin documentation</a>.');
+				jQuery('#role-label ~ div p').append(' See also <a href="https://github.com/sarepal/AdminPlus" target=_blank">AdminPlus plugin documentation</a>.');
 			</script>
 			<?php
     }
